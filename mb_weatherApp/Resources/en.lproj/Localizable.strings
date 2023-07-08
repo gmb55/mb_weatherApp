@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  mb_weatherApp
+
+  Created by Michał Bagrowski on 06/07/2023.
+  
+*/
+
+// General
+"app.name" = "WeatherApp";
+"log.in" = "Log In";
+"api.key" = "API Key";
+"continue" = "Continue";

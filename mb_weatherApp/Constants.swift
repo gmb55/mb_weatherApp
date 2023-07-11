@@ -13,6 +13,14 @@ enum Constants {
     }
     
     enum API {
-        static var baseURL = "https://api.openweathermap.org/data/2.5"
+        static var baseURL: URL? {
+            return URL(string: "https://api.openweathermap.org/data/2.5")
+        }
+    }
+    
+    enum Tag {
+        static let keyboardDismissableGestureRecognizer = "keyboardDismissableGestureRecognizer"
+        static let citiesListFileName = "citiesList"
+        static let citiesListFileExtension = "json"
     }
 }

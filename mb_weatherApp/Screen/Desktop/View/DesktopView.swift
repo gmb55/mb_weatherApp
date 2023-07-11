@@ -18,7 +18,7 @@ final class DesktopView: UIView {
         stackView.axis = .vertical
         stackView.spacing = 20
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 32, left: 40, bottom: 20, right: 40)
+        stackView.layoutMargins = UIEdgeInsets(top: 32, left: 20, bottom: 20, right: 20)
         stackView.distribution = .fill
         return stackView
     }()
@@ -60,6 +60,11 @@ final class DesktopView: UIView {
         button.layer.cornerRadius = 10
         return button
     }()
+
+    // TODO:
+    // add loaderView
+
+    // MARK: - Inits
     
     init() {
         super.init(frame: .zero)
@@ -75,7 +80,6 @@ final class DesktopView: UIView {
 
 private extension DesktopView {
     func setup() {
-        backgroundColor = R.color.woodsmoke()
         doLayout()
     }
     
@@ -117,7 +121,7 @@ private extension DesktopView {
         }
         
         animationSpaceBox.snp.makeConstraints { make in
-            make.height.equalTo(150)
+            make.height.equalTo(130)
         }
         
         continueButton.snp.makeConstraints { make in

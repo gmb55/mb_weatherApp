@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -31,7 +32,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             navigationController.navigationBar.tintColor = .black
             navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
         }
-
+        
+        IQKeyboardManager.shared.enable = true
         appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator?.start()
         window.rootViewController = navigationController

@@ -14,7 +14,7 @@ final class DesktopViewController: ViewController {
 
     private var desktopView: DesktopView {
         guard let desktopView = view as? DesktopView else {
-            fatalError("View is not set to DetailsView")
+            fatalError("View is not set to DesktopView")
          }
         return desktopView
     }
@@ -41,6 +41,7 @@ final class DesktopViewController: ViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         setupRxObservers()
         animateLogo()
+        setupTapGesture()
     }
 }
 
@@ -50,6 +51,7 @@ private extension DesktopViewController {
     func setupRxObservers() {
         bindAPIText()
         bindContinueButton()
+        setupErrorObserver()
     }
     
     func bindAPIText() {
@@ -61,6 +63,14 @@ private extension DesktopViewController {
     func bindContinueButton() {
         desktopView.continueButton.rx.tap
             .bind(to: viewModel.continueButtonTapped)
+            .disposed(by: disposeBag)
+    }
+    
+    func setupErrorObserver() {
+        viewModel.errorObservable
+            .subscribe(onNext: { [weak self] errorMessage in
+                self?.handleError(errorMessage)
+            })
             .disposed(by: disposeBag)
     }
 }
@@ -76,5 +86,22 @@ private extension DesktopViewController {
             self.desktopView.logoView.transform = scaleTransform.concatenating(transparentTransform)
             self.desktopView.logoView.alpha = 0.3
         }
+    }
+
+    func setupTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func viewTapped() {
+        desktopView.apiTextView.textView.endEditing(true)
+    }
+    
+    func handleError(_ message: String) {
+        self.showErrorAlert(message: message)
+            .subscribe(onNext: {
+                self.viewModel.setupRxObservers()
+            })
+            .disposed(by: self.disposeBag)
     }
 }

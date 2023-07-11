@@ -14,26 +14,4 @@ protocol APITextFieldViewModelInput {
 
 final class APITextFieldViewModel: ViewModel {
     let text = BehaviorRelay<String>(value: "")
-    
-    override init() {
-        super.init()
-        setupRxObservers()
-    }
-}
-
-// MARK: - Preparation
-
-private extension APITextFieldViewModel {
-    func setupRxObservers() {
-        setupTextObserver()
-    }
-
-    func setupTextObserver() {
-        text.asObservable()
-            .subscribe(onNext: { [weak self] text in
-                // Handle the updated text
-                print("New text: \(text)")
-            })
-            .disposed(by: disposeBag)
-    }
 }

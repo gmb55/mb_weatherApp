@@ -14,7 +14,9 @@ struct _R {
   let bundle: Foundation.Bundle
   var string: string { .init(bundle: bundle, preferredLanguages: nil, locale: nil) }
   var color: color { .init(bundle: bundle) }
+  var image: image { .init(bundle: bundle) }
   var info: info { .init(bundle: bundle) }
+  var file: file { .init(bundle: bundle) }
   var storyboard: storyboard { .init(bundle: bundle) }
 
   func string(bundle: Foundation.Bundle) -> string {
@@ -29,7 +31,13 @@ struct _R {
   func color(bundle: Foundation.Bundle) -> color {
     .init(bundle: bundle)
   }
+  func image(bundle: Foundation.Bundle) -> image {
+    .init(bundle: bundle)
+  }
   func info(bundle: Foundation.Bundle) -> info {
+    .init(bundle: bundle)
+  }
+  func file(bundle: Foundation.Bundle) -> file {
     .init(bundle: bundle)
   }
   func storyboard(bundle: Foundation.Bundle) -> storyboard {
@@ -55,7 +63,7 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 4 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 13 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
@@ -73,6 +81,20 @@ struct _R {
       /// Locales: en
       var appName: RswiftResources.StringResource { .init(key: "app.name", tableName: "Localizable", source: source, developmentValue: "WeatherApp", comment: nil) }
 
+      /// en translation: We're having trouble processing your request. Try again.
+      ///
+      /// Key: bad.request.error.message
+      ///
+      /// Locales: en
+      var badRequestErrorMessage: RswiftResources.StringResource { .init(key: "bad.request.error.message", tableName: "Localizable", source: source, developmentValue: "We're having trouble processing your request. Try again.", comment: nil) }
+
+      /// en translation: City name
+      ///
+      /// Key: cityName
+      ///
+      /// Locales: en
+      var cityName: RswiftResources.StringResource { .init(key: "cityName", tableName: "Localizable", source: source, developmentValue: "City name", comment: nil) }
+
       /// en translation: Continue
       ///
       /// Key: continue
@@ -80,12 +102,61 @@ struct _R {
       /// Locales: en
       var `continue`: RswiftResources.StringResource { .init(key: "continue", tableName: "Localizable", source: source, developmentValue: "Continue", comment: nil) }
 
+      /// en translation: Error
+      ///
+      /// Key: error
+      ///
+      /// Locales: en
+      var error: RswiftResources.StringResource { .init(key: "error", tableName: "Localizable", source: source, developmentValue: "Error", comment: nil) }
+
+      /// en translation: Error reading cities from file.
+      ///
+      /// Key: errorCitiesFromFileMessage
+      ///
+      /// Locales: en
+      var errorCitiesFromFileMessage: RswiftResources.StringResource { .init(key: "errorCitiesFromFileMessage", tableName: "Localizable", source: source, developmentValue: "Error reading cities from file.", comment: nil) }
+
+      /// en translation: Cities file not found.
+      ///
+      /// Key: errorCitiesNoFileMessage
+      ///
+      /// Locales: en
+      var errorCitiesNoFileMessage: RswiftResources.StringResource { .init(key: "errorCitiesNoFileMessage", tableName: "Localizable", source: source, developmentValue: "Cities file not found.", comment: nil) }
+
       /// en translation: Log In
       ///
       /// Key: log.in
       ///
       /// Locales: en
       var logIn: RswiftResources.StringResource { .init(key: "log.in", tableName: "Localizable", source: source, developmentValue: "Log In", comment: nil) }
+
+      /// en translation: Ok
+      ///
+      /// Key: ok
+      ///
+      /// Locales: en
+      var ok: RswiftResources.StringResource { .init(key: "ok", tableName: "Localizable", source: source, developmentValue: "Ok", comment: nil) }
+
+      /// en translation: Recently searched
+      ///
+      /// Key: recentyleSearched
+      ///
+      /// Locales: en
+      var recentyleSearched: RswiftResources.StringResource { .init(key: "recentyleSearched", tableName: "Localizable", source: source, developmentValue: "Recently searched", comment: nil) }
+
+      /// en translation: Select a city:
+      ///
+      /// Key: selectCity
+      ///
+      /// Locales: en
+      var selectCity: RswiftResources.StringResource { .init(key: "selectCity", tableName: "Localizable", source: source, developmentValue: "Select a city:", comment: nil) }
+
+      /// en translation: Login failed. Check your API key.
+      ///
+      /// Key: unauthorized.error.message
+      ///
+      /// Locales: en
+      var unauthorizedErrorMessage: RswiftResources.StringResource { .init(key: "unauthorized.error.message", tableName: "Localizable", source: source, developmentValue: "Login failed. Check your API key.", comment: nil) }
     }
   }
 
@@ -107,6 +178,14 @@ struct _R {
 
     /// Color `woodsmoke`.
     var woodsmoke: RswiftResources.ColorResource { .init(name: "woodsmoke", path: [], bundle: bundle) }
+  }
+
+  /// This `_R.image` struct is generated, and contains static references to 1 images.
+  struct image {
+    let bundle: Foundation.Bundle
+
+    /// Image `icSearch`.
+    var icSearch: RswiftResources.ImageResource { .init(name: "icSearch", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
   }
 
   /// This `_R.info` struct is generated, and contains static references to 1 properties.
@@ -156,6 +235,14 @@ struct _R {
         }
       }
     }
+  }
+
+  /// This `_R.file` struct is generated, and contains static references to 1 resource files.
+  struct file {
+    let bundle: Foundation.Bundle
+
+    /// Resource file `citiesList.json`.
+    var citiesListJson: RswiftResources.FileResource { .init(name: "citiesList", pathExtension: "json", bundle: bundle, locale: LocaleReference.none) }
   }
 
   /// This `_R.storyboard` struct is generated, and contains static references to 2 storyboards.

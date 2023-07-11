@@ -31,19 +31,20 @@ final class DesktopCoordinator: Coordinator {
 
 private extension DesktopCoordinator {
     func showDesktop() {
-        let desktopViewModel = prepareDesktopViewModel()
-        let desktopViewController = DesktopViewController(viewModel: desktopViewModel)
-        navigationController.setViewControllers([desktopViewController], animated: false)
+        let viewModel = prepareViewModel()
+        let viewController = DesktopViewController(viewModel: viewModel)
+        navigationController.setViewControllers([viewController], animated: false)
     }
     
-    func prepareDesktopViewModel() -> DefaultDesktopViewModel {
-        let startDetailsScreen = Action<()> { [weak self] in
-            self?.showDetailsCoordinator()
+    func prepareViewModel() -> DefaultDesktopViewModel {
+        let startCitiesListScreen = Action<()> { [weak self] in
+            self?.showCitiesListCoordinator()
         }
         
         return DefaultDesktopViewModel(
+            apiProvider: APIProvider.shared,
             actions: DefaultDesktopViewModel.CoordinatorOutput(
-                startDetailsScreen: startDetailsScreen
+                startCitiesListScreen: startCitiesListScreen
             )
         )
     }
@@ -52,9 +53,9 @@ private extension DesktopCoordinator {
 // MARK: - Show Details Coordinator
 
 private extension DesktopCoordinator {
-    func showDetailsCoordinator() {
-        let detailsCoordinator = DetailsCoordinator(navigationController: navigationController)
-        children.append(detailsCoordinator)
-        detailsCoordinator.start()
+    func showCitiesListCoordinator() {
+        let coordinator = CitiesListCoordinator(navigationController: navigationController)
+        children.append(coordinator)
+        coordinator.start()
     }
 }

@@ -11,3 +11,12 @@
 "log.in" = "Log In";
 "api.key" = "API Key";
 "continue" = "Continue";
+"bad.request.error.message" = "We're having trouble processing your request. Try again.";
+"unauthorized.error.message" = "Login failed. Check your API key.";
+"error" = "Error";
+"ok" = "Ok";
+"cityName" = "City name";
+"errorCitiesFromFileMessage" = "Error reading cities from file.";
+"errorCitiesNoFileMessage" = "Cities file not found.";
+"recentyleSearched" = "Recently searched";
+"selectCity" = "Select a city:";

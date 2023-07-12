@@ -14,9 +14,9 @@ struct AllCitiesModel: Decodable {
     let cities: [City]
     
     enum CodingKeys: String, CodingKey {
-        case message = "message"
+        case message
         case code = "cod"
-        case count = "count"
+        case count
         case cities = "list"
     }
 }

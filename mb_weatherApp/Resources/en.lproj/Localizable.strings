@@ -6,17 +6,38 @@
   
 */
 
-// General
-"app.name" = "WeatherApp";
-"log.in" = "Log In";
-"api.key" = "API Key";
+// MARK: - General
+
+"appName" = "WeatherApp";
+"logIn" = "Log In";
+"apiKey" = "API Key";
 "continue" = "Continue";
-"bad.request.error.message" = "We're having trouble processing your request. Try again.";
-"unauthorized.error.message" = "Login failed. Check your API key.";
-"error" = "Error";
 "ok" = "Ok";
 "cityName" = "City name";
+"lastSelected" = "Last selected:";
+"selectCity" = "Select a city:";
+"noCityFound" = "No city found.";
+"clearSky" = "Clear sky";
+"clouds" = "Clouds";
+"rain" = "Rain";
+"drizzle" = "Drizzle";
+"thunderstorm" = "Thunderstorm";
+"snow" = "Snow";
+"mist" = "Mist";
+"smoke" = "Smoke";
+"haze" = "Haze";
+"dust" = "Dust";
+"sand" = "Sand";
+"fog" = "Fog";
+"squall" = "Squall";
+"tornado" = "Tornado";
+
+// MARK: - Errors
+
+"error" = "Error";
+"badRequestErrorMessage" = "We're having trouble processing your request. Try again.";
+"unauthorizedErrorMessage" = "Login failed. Check your API key.";
+"dataReadErrorMessage" = "Data read error, please try again.";
+"illegalCharactersErrorMessage" = "The text contains illegal characters.";
 "errorCitiesFromFileMessage" = "Error reading cities from file.";
 "errorCitiesNoFileMessage" = "Cities file not found.";
-"recentyleSearched" = "Recently searched";
-"selectCity" = "Select a city:";

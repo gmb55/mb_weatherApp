@@ -63,30 +63,30 @@ struct _R {
     }
 
 
-    /// This `_R.string.localizable` struct is generated, and contains static references to 13 localization keys.
+    /// This `_R.string.localizable` struct is generated, and contains static references to 30 localization keys.
     struct localizable {
       let source: RswiftResources.StringResource.Source
 
       /// en translation: API Key
       ///
-      /// Key: api.key
+      /// Key: apiKey
       ///
       /// Locales: en
-      var apiKey: RswiftResources.StringResource { .init(key: "api.key", tableName: "Localizable", source: source, developmentValue: "API Key", comment: nil) }
+      var apiKey: RswiftResources.StringResource { .init(key: "apiKey", tableName: "Localizable", source: source, developmentValue: "API Key", comment: nil) }
 
       /// en translation: WeatherApp
       ///
-      /// Key: app.name
+      /// Key: appName
       ///
       /// Locales: en
-      var appName: RswiftResources.StringResource { .init(key: "app.name", tableName: "Localizable", source: source, developmentValue: "WeatherApp", comment: nil) }
+      var appName: RswiftResources.StringResource { .init(key: "appName", tableName: "Localizable", source: source, developmentValue: "WeatherApp", comment: nil) }
 
       /// en translation: We're having trouble processing your request. Try again.
       ///
-      /// Key: bad.request.error.message
+      /// Key: badRequestErrorMessage
       ///
       /// Locales: en
-      var badRequestErrorMessage: RswiftResources.StringResource { .init(key: "bad.request.error.message", tableName: "Localizable", source: source, developmentValue: "We're having trouble processing your request. Try again.", comment: nil) }
+      var badRequestErrorMessage: RswiftResources.StringResource { .init(key: "badRequestErrorMessage", tableName: "Localizable", source: source, developmentValue: "We're having trouble processing your request. Try again.", comment: nil) }
 
       /// en translation: City name
       ///
@@ -95,12 +95,47 @@ struct _R {
       /// Locales: en
       var cityName: RswiftResources.StringResource { .init(key: "cityName", tableName: "Localizable", source: source, developmentValue: "City name", comment: nil) }
 
+      /// en translation: Clear sky
+      ///
+      /// Key: clearSky
+      ///
+      /// Locales: en
+      var clearSky: RswiftResources.StringResource { .init(key: "clearSky", tableName: "Localizable", source: source, developmentValue: "Clear sky", comment: nil) }
+
+      /// en translation: Clouds
+      ///
+      /// Key: clouds
+      ///
+      /// Locales: en
+      var clouds: RswiftResources.StringResource { .init(key: "clouds", tableName: "Localizable", source: source, developmentValue: "Clouds", comment: nil) }
+
       /// en translation: Continue
       ///
       /// Key: continue
       ///
       /// Locales: en
       var `continue`: RswiftResources.StringResource { .init(key: "continue", tableName: "Localizable", source: source, developmentValue: "Continue", comment: nil) }
+
+      /// en translation: Data read error, please try again.
+      ///
+      /// Key: dataReadErrorMessage
+      ///
+      /// Locales: en
+      var dataReadErrorMessage: RswiftResources.StringResource { .init(key: "dataReadErrorMessage", tableName: "Localizable", source: source, developmentValue: "Data read error, please try again.", comment: nil) }
+
+      /// en translation: Drizzle
+      ///
+      /// Key: drizzle
+      ///
+      /// Locales: en
+      var drizzle: RswiftResources.StringResource { .init(key: "drizzle", tableName: "Localizable", source: source, developmentValue: "Drizzle", comment: nil) }
+
+      /// en translation: Dust
+      ///
+      /// Key: dust
+      ///
+      /// Locales: en
+      var dust: RswiftResources.StringResource { .init(key: "dust", tableName: "Localizable", source: source, developmentValue: "Dust", comment: nil) }
 
       /// en translation: Error
       ///
@@ -123,12 +158,54 @@ struct _R {
       /// Locales: en
       var errorCitiesNoFileMessage: RswiftResources.StringResource { .init(key: "errorCitiesNoFileMessage", tableName: "Localizable", source: source, developmentValue: "Cities file not found.", comment: nil) }
 
-      /// en translation: Log In
+      /// en translation: Fog
       ///
-      /// Key: log.in
+      /// Key: fog
       ///
       /// Locales: en
-      var logIn: RswiftResources.StringResource { .init(key: "log.in", tableName: "Localizable", source: source, developmentValue: "Log In", comment: nil) }
+      var fog: RswiftResources.StringResource { .init(key: "fog", tableName: "Localizable", source: source, developmentValue: "Fog", comment: nil) }
+
+      /// en translation: Haze
+      ///
+      /// Key: haze
+      ///
+      /// Locales: en
+      var haze: RswiftResources.StringResource { .init(key: "haze", tableName: "Localizable", source: source, developmentValue: "Haze", comment: nil) }
+
+      /// en translation: The text contains illegal characters.
+      ///
+      /// Key: illegalCharactersErrorMessage
+      ///
+      /// Locales: en
+      var illegalCharactersErrorMessage: RswiftResources.StringResource { .init(key: "illegalCharactersErrorMessage", tableName: "Localizable", source: source, developmentValue: "The text contains illegal characters.", comment: nil) }
+
+      /// en translation: Last selected:
+      ///
+      /// Key: lastSelected
+      ///
+      /// Locales: en
+      var lastSelected: RswiftResources.StringResource { .init(key: "lastSelected", tableName: "Localizable", source: source, developmentValue: "Last selected:", comment: nil) }
+
+      /// en translation: Log In
+      ///
+      /// Key: logIn
+      ///
+      /// Locales: en
+      var logIn: RswiftResources.StringResource { .init(key: "logIn", tableName: "Localizable", source: source, developmentValue: "Log In", comment: nil) }
+
+      /// en translation: Mist
+      ///
+      /// Key: mist
+      ///
+      /// Locales: en
+      var mist: RswiftResources.StringResource { .init(key: "mist", tableName: "Localizable", source: source, developmentValue: "Mist", comment: nil) }
+
+      /// en translation: No city found.
+      ///
+      /// Key: noCityFound
+      ///
+      /// Locales: en
+      var noCityFound: RswiftResources.StringResource { .init(key: "noCityFound", tableName: "Localizable", source: source, developmentValue: "No city found.", comment: nil) }
 
       /// en translation: Ok
       ///
@@ -137,12 +214,19 @@ struct _R {
       /// Locales: en
       var ok: RswiftResources.StringResource { .init(key: "ok", tableName: "Localizable", source: source, developmentValue: "Ok", comment: nil) }
 
-      /// en translation: Recently searched
+      /// en translation: Rain
       ///
-      /// Key: recentyleSearched
+      /// Key: rain
       ///
       /// Locales: en
-      var recentyleSearched: RswiftResources.StringResource { .init(key: "recentyleSearched", tableName: "Localizable", source: source, developmentValue: "Recently searched", comment: nil) }
+      var rain: RswiftResources.StringResource { .init(key: "rain", tableName: "Localizable", source: source, developmentValue: "Rain", comment: nil) }
+
+      /// en translation: Sand
+      ///
+      /// Key: sand
+      ///
+      /// Locales: en
+      var sand: RswiftResources.StringResource { .init(key: "sand", tableName: "Localizable", source: source, developmentValue: "Sand", comment: nil) }
 
       /// en translation: Select a city:
       ///
@@ -151,12 +235,47 @@ struct _R {
       /// Locales: en
       var selectCity: RswiftResources.StringResource { .init(key: "selectCity", tableName: "Localizable", source: source, developmentValue: "Select a city:", comment: nil) }
 
-      /// en translation: Login failed. Check your API key.
+      /// en translation: Smoke
       ///
-      /// Key: unauthorized.error.message
+      /// Key: smoke
       ///
       /// Locales: en
-      var unauthorizedErrorMessage: RswiftResources.StringResource { .init(key: "unauthorized.error.message", tableName: "Localizable", source: source, developmentValue: "Login failed. Check your API key.", comment: nil) }
+      var smoke: RswiftResources.StringResource { .init(key: "smoke", tableName: "Localizable", source: source, developmentValue: "Smoke", comment: nil) }
+
+      /// en translation: Snow
+      ///
+      /// Key: snow
+      ///
+      /// Locales: en
+      var snow: RswiftResources.StringResource { .init(key: "snow", tableName: "Localizable", source: source, developmentValue: "Snow", comment: nil) }
+
+      /// en translation: Squall
+      ///
+      /// Key: squall
+      ///
+      /// Locales: en
+      var squall: RswiftResources.StringResource { .init(key: "squall", tableName: "Localizable", source: source, developmentValue: "Squall", comment: nil) }
+
+      /// en translation: Thunderstorm
+      ///
+      /// Key: thunderstorm
+      ///
+      /// Locales: en
+      var thunderstorm: RswiftResources.StringResource { .init(key: "thunderstorm", tableName: "Localizable", source: source, developmentValue: "Thunderstorm", comment: nil) }
+
+      /// en translation: Tornado
+      ///
+      /// Key: tornado
+      ///
+      /// Locales: en
+      var tornado: RswiftResources.StringResource { .init(key: "tornado", tableName: "Localizable", source: source, developmentValue: "Tornado", comment: nil) }
+
+      /// en translation: Login failed. Check your API key.
+      ///
+      /// Key: unauthorizedErrorMessage
+      ///
+      /// Locales: en
+      var unauthorizedErrorMessage: RswiftResources.StringResource { .init(key: "unauthorizedErrorMessage", tableName: "Localizable", source: source, developmentValue: "Login failed. Check your API key.", comment: nil) }
     }
   }
 
@@ -180,12 +299,48 @@ struct _R {
     var woodsmoke: RswiftResources.ColorResource { .init(name: "woodsmoke", path: [], bundle: bundle) }
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 1 images.
+  /// This `_R.image` struct is generated, and contains static references to 13 images.
   struct image {
     let bundle: Foundation.Bundle
 
+    /// Image `icCloud`.
+    var icCloud: RswiftResources.ImageResource { .init(name: "icCloud", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icCloudDay`.
+    var icCloudDay: RswiftResources.ImageResource { .init(name: "icCloudDay", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icDroplets`.
+    var icDroplets: RswiftResources.ImageResource { .init(name: "icDroplets", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icDust`.
+    var icDust: RswiftResources.ImageResource { .init(name: "icDust", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icHurricane`.
+    var icHurricane: RswiftResources.ImageResource { .init(name: "icHurricane", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icMist`.
+    var icMist: RswiftResources.ImageResource { .init(name: "icMist", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icRain`.
+    var icRain: RswiftResources.ImageResource { .init(name: "icRain", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
     /// Image `icSearch`.
     var icSearch: RswiftResources.ImageResource { .init(name: "icSearch", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icSnow`.
+    var icSnow: RswiftResources.ImageResource { .init(name: "icSnow", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icSun`.
+    var icSun: RswiftResources.ImageResource { .init(name: "icSun", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icThunder`.
+    var icThunder: RswiftResources.ImageResource { .init(name: "icThunder", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icThunder2`.
+    var icThunder2: RswiftResources.ImageResource { .init(name: "icThunder2", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icWind`.
+    var icWind: RswiftResources.ImageResource { .init(name: "icWind", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
   }
 
   /// This `_R.info` struct is generated, and contains static references to 1 properties.

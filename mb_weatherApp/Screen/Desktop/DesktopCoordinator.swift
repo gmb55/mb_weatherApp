@@ -37,8 +37,8 @@ private extension DesktopCoordinator {
     }
     
     func prepareViewModel() -> DefaultDesktopViewModel {
-        let startCitiesListScreen = Action<()> { [weak self] in
-            self?.showCitiesListCoordinator()
+        let startCitiesListScreen = Action<String> { [weak self] apiKey in
+            self?.showCitiesListCoordinator(with: apiKey)
         }
         
         return DefaultDesktopViewModel(
@@ -53,9 +53,9 @@ private extension DesktopCoordinator {
 // MARK: - Show Details Coordinator
 
 private extension DesktopCoordinator {
-    func showCitiesListCoordinator() {
+    func showCitiesListCoordinator(with apiKey: String) {
         let coordinator = CitiesListCoordinator(navigationController: navigationController)
         children.append(coordinator)
-        coordinator.start()
+        coordinator.start(with: apiKey)
     }
 }

@@ -52,6 +52,7 @@ private extension DesktopViewController {
         bindAPIText()
         bindContinueButton()
         setupErrorObserver()
+        setupShowLoaderOBserver()
     }
     
     func bindAPIText() {
@@ -68,8 +69,18 @@ private extension DesktopViewController {
     
     func setupErrorObserver() {
         viewModel.errorObservable
-            .subscribe(onNext: { [weak self] errorMessage in
-                self?.handleError(errorMessage)
+            .subscribe(onNext: { [weak self] errorType in
+                self?.handleError(errorType.message)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func setupShowLoaderOBserver() {
+        viewModel.showLoader
+            .subscribe(onNext: { [weak self] shouldShow in
+                DispatchQueue.main.async {
+                    self?.desktopView.updateLoader(isVisible: shouldShow)
+                }
             })
             .disposed(by: disposeBag)
     }

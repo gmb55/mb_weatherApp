@@ -51,30 +51,43 @@ private extension CitiesListViewController {
     func setupRxObservers() {
         bindCityNameText()
         setupErrorObserver()
-        setupAllCitiesObserver()
+        setupFilteredCitiesObserver()
+        setupLastSelectedObserver()
     }
     
     func bindCityNameText() {
-        viewModel.cityNameText
-            .bind(to: citiesListView.textField.rx.text)
+        citiesListView.textField.rx.text.orEmpty
+            .bind(to: viewModel.cityNameText)
             .disposed(by: disposeBag)
     }
     
     func setupErrorObserver() {
         viewModel.errorObservable
-            .subscribe(onNext: { [weak self] errorMessage in
-                self?.handleError(errorMessage)
+            .subscribe(onNext: { [weak self] errorType in
+                self?.handleError(errorType)
             })
             .disposed(by: disposeBag)
     }
     
-    func setupAllCitiesObserver() {
-        viewModel.allCitiesModels
-            .subscribe(onNext: { [weak self] models in
-                self?.citiesListView.allCitiesTableView.reloadData()
+    func setupFilteredCitiesObserver() {
+        viewModel.filteredCitiesNames
+            .subscribe(onNext: { [weak self] names in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    self.citiesListView.updateWith(filteredCities: names, isSearching: self.viewModel.isSearching)
+                }
             })
             .disposed(by: disposeBag)
-        
+    }
+    
+    func setupLastSelectedObserver() {
+        viewModel.lastSelectedCitiesNames
+            .subscribe(onNext: { [weak self] names in
+                DispatchQueue.main.async {
+                    self?.citiesListView.updateLastSelected(with: names)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
@@ -91,56 +104,76 @@ private extension CitiesListViewController {
         citiesListView.textField.endEditing(true)
     }
     
-    func handleError(_ message: String) {
-        self.showErrorAlert(message: message)
-            .subscribe(onNext: {
-                self.viewModel.setupRxObservers()
+    func handleError(_ type: ErrorType) {
+        switch type {
+        case .illegalCharacters:
+            DispatchQueue.main.async {
+                self.citiesListView.clearTextField()
+            }
+        default: break
+        }
+        prepareErrorAlert(type)
+    }
+    
+    func prepareErrorAlert(_ type: ErrorType) {
+        showErrorAlert(message: type.message)
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel.setupRxObservers()
             })
             .disposed(by: self.disposeBag)
     }
     
-    private func setupTableViews() {
+    // TODO: add Wraper that will handle TableView in ViewModel
+    func setupTableViews() {
+        setupAllCitiesTableView()
+        setupLastSelectedTableView()
+    }
+    
+    func setupAllCitiesTableView() {
         let allCitiesTableView = citiesListView.allCitiesTableView
         allCitiesTableView.register(CityCell.self, forCellReuseIdentifier: String(describing: CityCell.self))
         allCitiesTableView.dataSource = self
         allCitiesTableView.delegate = self
-
-        let recentlySelectedTableView = citiesListView.recentlySelectedTableView
-        recentlySelectedTableView.register(CityCell.self, forCellReuseIdentifier: String(describing: CityCell.self))
-        recentlySelectedTableView.dataSource = self
-        recentlySelectedTableView.delegate = self
+    }
+    
+    func setupLastSelectedTableView() {
+        let lastSelectedTableView = citiesListView.lastSelectedTableView
+        lastSelectedTableView.register(CityCell.self, forCellReuseIdentifier: String(describing: CityCell.self))
+        lastSelectedTableView.dataSource = self
+        lastSelectedTableView.delegate = self
     }
 }
 
 // MARK: - TableView DataSource
 
+// TODO: add Wraper that will handle TableView in ViewModel
 extension CitiesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == citiesListView.recentlySelectedTableView {
-            return 3
-        }
-        return viewModel.allCitiesModels.value.count
+        let isLastSelected = tableView == citiesListView.lastSelectedTableView
+
+        return viewModel.dataCount(forLast: isLastSelected)
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cityCellIdentifier = String(describing: CityCell.self)
-        guard let cityCell = tableView.dequeueReusableCell(withIdentifier: cityCellIdentifier, for: indexPath) as? CityCell else {
-            return UITableViewCell()
-        }
-        let city = viewModel.allCitiesModels.value[indexPath.row]
-        cityCell.config(with: city.name)
+        let isLastSelected = tableView == citiesListView.lastSelectedTableView
+
+        guard
+            let cityCell = tableView.dequeueReusableCell(withIdentifier: cityCellIdentifier, for: indexPath) as? CityCell,
+            let cityName = viewModel.cityName(for: indexPath.row, forLast: isLastSelected)
+        else { return UITableViewCell() }
+
+        cityCell.config(with: cityName)
         return cityCell
     }
 }
 
 // MARK: - TableView Delegate
 
+// TODO: add Wraper that will handle TableView in ViewModel
 extension CitiesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if tableView == citiesListView.recentlySelectedTableView {
-            let test = ""
-        } else if tableView == citiesListView.allCitiesTableView {
-            viewModel.cityIndex.accept(indexPath.row)
-        }
+        let isLastSelected = tableView == citiesListView.lastSelectedTableView
+        viewModel.selectCityIndex(indexPath.row, forLast: isLastSelected)
     }
 }

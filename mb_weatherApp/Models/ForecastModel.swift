@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct WeatherForecast: Decodable {
+struct WeatherForecastResponse: Decodable {
     let cod: String
     let message: Int
-    let count: Int
+    let cnt: Int
     let list: [WeatherForecastItem]
     let city: City
 }
@@ -25,7 +25,7 @@ struct WeatherForecastItem: Decodable {
     let pop: Double
     let sys: Sys
     let dtTxt: String
-
+    
     enum CodingKeys: String, CodingKey {
         case dt
         case main
@@ -39,7 +39,7 @@ struct WeatherForecastItem: Decodable {
     }
 }
 
-struct WeatherForecastMain: Decodable {
+struct WeatherForecastMain: Codable {
     let temp: Double
     let feelsLike: Double
     let tempMin: Double
@@ -49,7 +49,7 @@ struct WeatherForecastMain: Decodable {
     let groundLevel: Int
     let humidity: Int
     let tempKf: Double
-
+    
     enum CodingKeys: String, CodingKey {
         case temp
         case feelsLike = "feels_like"

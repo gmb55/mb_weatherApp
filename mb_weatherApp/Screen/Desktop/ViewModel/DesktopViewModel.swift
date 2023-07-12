@@ -17,7 +17,8 @@ protocol DesktopViewModelInput {
 }
 
 protocol DesktopViewModelOutput {
-    var errorObservable: PublishRelay<String> { get }
+    var errorObservable: PublishRelay<ErrorType> { get }
+    var showLoader: PublishRelay<Bool> { get }
 }
 
 typealias DesktopViewModel = DesktopViewModelInput & DesktopViewModelOutput
@@ -34,7 +35,8 @@ final class DefaultDesktopViewModel: ViewModel, DesktopViewModel {
 
     // MARK: - Output
     
-    let errorObservable = PublishRelay<String>()
+    let errorObservable = PublishRelay<ErrorType>()
+    let showLoader = PublishRelay<Bool>()
     
     // MARK: - Inits
 
@@ -58,6 +60,7 @@ private extension DefaultDesktopViewModel {
     func setupContinueButtonTappedObserver() {
         continueButtonTapped
             .subscribe(onNext: { [weak self] in
+                self?.showLoader.accept(true)
                 self?.pingServer()
             })
             .disposed(by: disposeBag)
@@ -74,30 +77,18 @@ private extension DefaultDesktopViewModel {
             .asObservable()
             .subscribe(
                 onNext: { [weak self] model in
-                    self?.navigation.coordinator?.startCitiesListScreen.perform(param: ())
+                    guard let self = self else { return }
+                    self.showLoader.accept(false)
+                    self.navigation.coordinator?.startCitiesListScreen.perform(param: self.apiText.value)
                 },
                 onError: { [weak self] error in
-                    self?.handleError(error)
+                    guard let self = self else { return }
+                    let errorType = self.errorType(error)
                     
+                    self.errorObservable.accept(errorType)
+                    self.showLoader.accept(false)
                 }
             ).disposed(by: disposeBag)
-    }
-    
-    func handleError(_ error: Error) {
-        if let apiError = error as? MoyaError,
-           let response = apiError.response,
-           response.statusCode != 200 {
-            let errorMessage = getErrorMessage(forStatusCode: response.statusCode)
-            errorObservable.accept(errorMessage)
-        } else {
-            errorObservable.accept(error.localizedDescription)
-        }
-    }
-
-    func getErrorMessage(forStatusCode: Int) -> String {
-        forStatusCode == 401
-            ? R.string.localizable.unauthorizedErrorMessage()
-            : R.string.localizable.badRequestErrorMessage()
     }
 }
 
@@ -116,6 +107,6 @@ extension DefaultDesktopViewModel {
     }
 
     struct CoordinatorOutput {
-        let startCitiesListScreen: Action<()>
+        let startCitiesListScreen: Action<String>
     }
 }

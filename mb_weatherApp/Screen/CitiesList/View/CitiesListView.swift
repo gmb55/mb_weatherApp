@@ -7,6 +7,12 @@
 
 import SnapKit
 
+protocol CitiesListViewInput {
+    func updateLastSelected(with names: [String])
+    func updateWith(filteredCities: [String], isSearching: Bool)
+    func clearTextField()
+}
+
 final class CitiesListView: UIView {
     let stackView: UIStackView = {
         let stackView: UIStackView = .create()
@@ -18,10 +24,9 @@ final class CitiesListView: UIView {
         return stackView
     }()
     
-    
+    // TODO: make a new Component SearchBarView
     let searchStackView: UIStackView = {
         let stackView: UIStackView = .create()
-        stackView.axis = .horizontal
         stackView.spacing = 12
         stackView.distribution = .fill
         return stackView
@@ -45,14 +50,22 @@ final class CitiesListView: UIView {
         return textField
     }()
     
-    let recentlySearchedLabel: UILabel = {
+    // TODO: add Header to TableView
+    let lastSelectedStackView: UIStackView = {
+        let stackView: UIStackView = .create()
+        stackView.axis = .vertical
+        stackView.spacing = 12
+        stackView.isHidden = true
+        return stackView
+    }()
+    let lastSelectedLabel: UILabel = {
         let label: UILabel = .create()
-        label.text = R.string.localizable.recentyleSearched()
+        label.text = R.string.localizable.lastSelected()
         label.textColor = R.color.raven()
         label.font = .systemFont(ofSize: 24, weight: .semibold)
         return label
     }()
-    let recentlySelectedTableView: UITableView = {
+    let lastSelectedTableView: UITableView = {
         let tableView: UITableView = .create()
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
@@ -60,6 +73,7 @@ final class CitiesListView: UIView {
         return tableView
     }()
     
+    // TODO: add Header to TableView
     let selectCityLabel: UILabel = {
         let label: UILabel = .create()
         label.text = R.string.localizable.selectCity()
@@ -72,6 +86,16 @@ final class CitiesListView: UIView {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         return tableView
+    }()
+    
+    // TODO: add EmptyState as Cell
+    let noCityFoundLabel: UILabel = {
+        let label: UILabel = .create()
+        label.text = R.string.localizable.noCityFound()
+        label.textColor = R.color.raven()
+        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.isHidden = true
+        return label
     }()
     
     // MARK: - Inits
@@ -102,15 +126,19 @@ private extension CitiesListView {
         addSubviews(stackView)
         stackView.addArrangedSubviews(
             searchStackView,
-            recentlySearchedLabel,
-            recentlySelectedTableView,
+            lastSelectedStackView,
             selectCityLabel,
             allCitiesTableView,
+            noCityFoundLabel,
             UIView()
         )
         searchStackView.addArrangedSubviews(
             searchImageView,
             textField
+        )
+        lastSelectedStackView.addArrangedSubviews(
+            lastSelectedLabel,
+            lastSelectedTableView
         )
     }
 
@@ -120,11 +148,32 @@ private extension CitiesListView {
         searchImageView.snp.makeConstraints { make in
             make.width.height.equalTo(32)
         }
-        recentlySelectedTableView.snp.makeConstraints { make in
+        lastSelectedTableView.snp.makeConstraints { make in
             make.height.equalTo(174)
         }
         allCitiesTableView.snp.makeConstraints { make in
             make.height.greaterThanOrEqualTo(100)
         }
+    }
+}
+
+// MARK: - Input
+
+extension CitiesListView: CitiesListViewInput {
+    func updateLastSelected(with names: [String]) {
+        lastSelectedStackView.isHidden = names.isEmpty
+        lastSelectedTableView.reloadData()
+    }
+    
+    func updateWith(filteredCities: [String], isSearching: Bool) {
+        allCitiesTableView.reloadData()
+        allCitiesTableView.isHidden = filteredCities.isEmpty && isSearching
+        lastSelectedTableView.reloadData()
+        lastSelectedStackView.isHidden = !filteredCities.isEmpty || isSearching
+        noCityFoundLabel.isHidden = !filteredCities.isEmpty && !isSearching
+    }
+    
+    func clearTextField() {
+        textField.text = ""
     }
 }

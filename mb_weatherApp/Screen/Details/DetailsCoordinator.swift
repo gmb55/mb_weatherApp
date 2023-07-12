@@ -22,21 +22,22 @@ final class DetailsCoordinator: Coordinator {
 
     // MARK: - Methods
 
-    func start() {
-        showDetails()
+    func start(with model: DefaultDetailsViewModel.DetailsModel) {
+        showDetails(with: model)
     }
+
+    func start() {}
 }
 
 // MARK: - Private Actions
 
 private extension DetailsCoordinator {
-    func showDetails() {
-        let detailsViewModel = DefaultDetailsViewModel(navigation: self)
+    func showDetails(with model: DefaultDetailsViewModel.DetailsModel) {
+        let detailsViewModel = DefaultDetailsViewModel(
+            apiProvider: APIProvider.shared,
+            model: model
+        )
         let detailsViewController = DetailsViewController(viewModel: detailsViewModel)
         navigationController.pushViewController(detailsViewController, animated: false)
     }
 }
-
-// MARK: - Details Navigation
-
-extension DetailsCoordinator: DetailsNavigation {}

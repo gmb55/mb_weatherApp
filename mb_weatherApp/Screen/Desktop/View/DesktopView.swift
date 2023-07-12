@@ -7,6 +7,10 @@
 
 import SnapKit
 
+protocol DesktopViewInput {
+    func updateLoader(isVisible: Bool)
+}
+
 final class DesktopView: UIView {
     let scrollView: UIScrollView = {
         let scrollView: UIScrollView = .create()
@@ -60,9 +64,14 @@ final class DesktopView: UIView {
         button.layer.cornerRadius = 10
         return button
     }()
-
-    // TODO:
-    // add loaderView
+    
+    let activityIndicatorView: UIActivityIndicatorView = {
+        let activityIndicatorView = UIActivityIndicatorView(style: .whiteLarge)
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicatorView.color = R.color.raven()
+        activityIndicatorView.backgroundColor = R.color.ebonyClay()?.withAlphaComponent(0.5)
+        return activityIndicatorView
+    }()
 
     // MARK: - Inits
     
@@ -89,7 +98,7 @@ private extension DesktopView {
     }
 
     func addSubviews() {
-        addSubviews(scrollView)
+        addSubviews(scrollView, activityIndicatorView)
         
         scrollView.addSubview(stackView)
         
@@ -107,6 +116,8 @@ private extension DesktopView {
     }
 
     func configureConstraints() {
+        activityIndicatorView.expandToSuperview()
+        
         scrollView.expandToSuperviewSafearea()
         
         stackView.snp.makeConstraints { make in
@@ -127,5 +138,15 @@ private extension DesktopView {
         continueButton.snp.makeConstraints { make in
             make.height.equalTo(50)
         }
+    }
+}
+
+// MARK: - Input
+
+extension DesktopView: DesktopViewInput {
+    func updateLoader(isVisible: Bool) {
+        isVisible
+            ? activityIndicatorView.startAnimating()
+            : activityIndicatorView.stopAnimating()
     }
 }

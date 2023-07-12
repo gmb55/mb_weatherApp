@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DetailsViewController: UIViewController {
+final class DetailsViewController: ViewController {
     // MARK: - Properties
 
     private let viewModel: DetailsViewModel
@@ -47,5 +47,50 @@ final class DetailsViewController: UIViewController {
 
 private extension DetailsViewController {
     func setupRxObservers() {
+        setupErrorObserver()
+        setupShowLoaderOBserver()
+        setupDataModelObserver()
+    }
+    
+    func setupErrorObserver() {
+        viewModel.errorObservable
+            .subscribe(onNext: { [weak self] errorType in
+                DispatchQueue.main.async {
+                    self?.handleError(errorType.message)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func setupShowLoaderOBserver() {
+        viewModel.showLoader
+            .subscribe(onNext: { [weak self] shouldShow in
+                DispatchQueue.main.async {
+                    self?.detailsView.updateLoader(isVisible: shouldShow)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func setupDataModelObserver() {
+        viewModel.dataModel
+            .subscribe(onNext: { [weak self] model in
+                DispatchQueue.main.async {
+                    self?.detailsView.update(with: model)
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - Private Actions
+
+private extension DetailsViewController {
+    func handleError(_ message: String) {
+        showErrorAlert(message: message)
+            .subscribe(onNext: {
+                self.viewModel.setupRxObservers()
+            })
+            .disposed(by: self.disposeBag)
     }
 }

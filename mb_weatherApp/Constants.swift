@@ -10,6 +10,9 @@ import Foundation
 enum Constants {
     enum General {
         static let referenceUnit: CGFloat = 17
+        static let lastSelectedCitiesCount: Int = 3
+        static let celsiusDegreeSymbol = "\u{00B0}C"
+        static let hPa = "hPa"
     }
     
     enum API {

@@ -21,29 +21,30 @@ final class CitiesListCoordinator: Coordinator {
 
     // MARK: - Methods
 
-    func start() {
-        showCitiesList()
+    func start(with apiKey: String) {
+        showCitiesList(with: apiKey)
     }
+    
+    func start() {}
 }
 
 // MARK: - Private Actions
 
 private extension CitiesListCoordinator {
-    func showCitiesList() {
-        let viewModel = prepareCitiesListViewModel()
+    func showCitiesList(with apiKey: String) {
+        let viewModel = prepareCitiesListViewModel(with: apiKey)
         let viewController = CitiesListViewController(viewModel: viewModel)
         navigationController.setViewControllers([viewController], animated: false)
     }
     
-    func prepareCitiesListViewModel() -> DefaultCitiesListViewModel {
-        let startDetailsScreen = Action<Int> { [weak self] id in
-            self?.showDetailsCoordinator()
+    func prepareCitiesListViewModel(with apiKey: String) -> DefaultCitiesListViewModel {
+        let startDetailsScreen = Action<DefaultDetailsViewModel.DetailsModel> { [weak self] model in
+            self?.showDetailsCoordinator(with: model)
         }
         
         return DefaultCitiesListViewModel(
-            actions: DefaultCitiesListViewModel.CoordinatorOutput(
-                startDetailsScreen: startDetailsScreen
-            )
+            apiKey: apiKey,
+            actions: DefaultCitiesListViewModel.CoordinatorOutput(startDetailsScreen: startDetailsScreen)
         )
     }
 }
@@ -51,9 +52,9 @@ private extension CitiesListCoordinator {
 // MARK: - Show Details Coordinator
 
 private extension CitiesListCoordinator {
-    func showDetailsCoordinator() {
+    func showDetailsCoordinator(with model: DefaultDetailsViewModel.DetailsModel) {
         let coordinator = DetailsCoordinator(navigationController: navigationController)
         children.append(coordinator)
-        coordinator.start()
+        coordinator.start(with: model)
     }
 }

@@ -170,7 +170,7 @@ extension CitiesListView: CitiesListViewInput {
         allCitiesTableView.isHidden = filteredCities.isEmpty && isSearching
         lastSelectedTableView.reloadData()
         lastSelectedStackView.isHidden = !filteredCities.isEmpty || isSearching
-        noCityFoundLabel.isHidden = !filteredCities.isEmpty && !isSearching
+        noCityFoundLabel.isHidden = !filteredCities.isEmpty || !isSearching
     }
     
     func clearTextField() {

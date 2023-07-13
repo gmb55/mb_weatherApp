@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 
 protocol CitiesListViewModelInput {
-    var cityNameText: BehaviorRelay<String> { get }
+    var cityNameText: PublishRelay<String> { get }
     
     func setupRxObservers()
     func selectCityIndex(_ index: Int, forLast: Bool)
@@ -32,7 +32,7 @@ typealias CitiesListViewModel = CitiesListViewModelInput & CitiesListViewModelOu
 final class DefaultCitiesListViewModel: ViewModel, CitiesListViewModel {
     // MARK: - Input
     
-    let cityNameText = BehaviorRelay<String>(value: "")
+    let cityNameText = PublishRelay<String>()
     
     func setupRxObservers() {
         setupCityNameTextObserver()
@@ -157,20 +157,9 @@ private extension DefaultCitiesListViewModel {
     func handleEnteredText(_ text: String) {
         isSearching = !text.isEmpty
 
-        isValidCityName(text)
+        text.isValidCityName()
             ? filterDataBase(with: text)
             : errorObservable.accept(.illegalCharacters)
-    }
-    
-    func isValidCityName(_ cityName: String) -> Bool {
-        let regexPattern = "^[a-zA-Z\\s.-]+$"
-        let regex = try! NSRegularExpression(pattern: regexPattern)
-        let range = NSRange(location: 0, length: cityName.utf16.count)
-        let matches = regex.matches(in: cityName, range: range)
-        
-        return cityName.isEmpty
-            ? true
-            : !matches.isEmpty
     }
     
     func filterDataBase(with text: String) {

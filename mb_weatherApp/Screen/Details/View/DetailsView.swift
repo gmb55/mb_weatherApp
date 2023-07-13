@@ -25,6 +25,7 @@ final class DetailsView: UIView {
         stackView.isLayoutMarginsRelativeArrangement = true
         stackView.layoutMargins = UIEdgeInsets(top: 32, left: 20, bottom: 20, right: 20)
         stackView.distribution = .fill
+        stackView.isHidden = true
         return stackView
     }()
     
@@ -188,6 +189,7 @@ extension DetailsView: DetailsViewInputs {
     }
     
     func update(with model: DefaultDetailsViewModel.DetailsDataModel) {
+        stackView.isHidden = false
         updateWeather(with: model.weather)
         updateForecast(with: model.forecast)
     }
@@ -200,8 +202,8 @@ private extension DetailsView {
         let todayTemperature = model.main.temp
         
         titleLabel.text = model.name
-        todayTempLabel.text = String(format: "%.0f", todayTemperature) + Constants.General.celsiusDegreeSymbol
-        todayTempLabel.textColor = todayTemperature.temperatureTextColor()
+        todayTempLabel.text = String(format: "%.0f", todayTemperature.rounded()) + Constants.General.celsiusDegreeSymbol
+        todayTempLabel.textColor = todayTemperature.rounded().temperatureTextColor()
         pressureLabel.text = String(model.main.pressure) + Constants.General.hPa
         
         let weatherMain = model.weather.first?.main ?? ""

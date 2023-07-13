@@ -26,7 +26,6 @@
 		68883F0A2A5B495100E59C90 /* ForecastModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68883F092A5B495100E59C90 /* ForecastModel.swift */; };
 		68A749EA2A5EDCD4004D5DEE /* WeatherType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A749E92A5EDCD4004D5DEE /* WeatherType.swift */; };
 		68A85F252A56EB4E00EDFED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A85F242A56EB4E00EDFED1 /* AppDelegate.swift */; };
-		68A85F272A56EB4E00EDFED1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A85F262A56EB4E00EDFED1 /* SceneDelegate.swift */; };
 		68A85F2C2A56EB4E00EDFED1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68A85F2A2A56EB4E00EDFED1 /* Main.storyboard */; };
 		68A85F2E2A56EB4F00EDFED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68A85F2D2A56EB4F00EDFED1 /* Assets.xcassets */; };
 		68A85F312A56EB4F00EDFED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68A85F2F2A56EB4F00EDFED1 /* LaunchScreen.storyboard */; };
@@ -54,6 +53,7 @@
 		68A85F9A2A57509A00EDFED1 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A85F952A57509A00EDFED1 /* LogoView.swift */; };
 		68A85F9C2A5750D000EDFED1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A85F9B2A5750D000EDFED1 /* Constants.swift */; };
 		68A953092A5AA8FA00E5F7DE /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A953082A5AA8FA00E5F7DE /* APIProvider.swift */; };
+		68AC81A32A6021B100172B47 /* String+isValidCityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AC81A22A6021B100172B47 /* String+isValidCityName.swift */; };
 		68ACF5E62A5BE9D9008C0008 /* CitiesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ACF5E52A5BE9D9008C0008 /* CitiesListCoordinator.swift */; };
 		68ACF5E82A5BE9FC008C0008 /* CitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ACF5E72A5BE9FC008C0008 /* CitiesListViewModel.swift */; };
 		68ACF5EA2A5BEA03008C0008 /* CitiesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ACF5E92A5BEA03008C0008 /* CitiesListView.swift */; };
@@ -111,7 +111,6 @@
 		68A749E92A5EDCD4004D5DEE /* WeatherType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherType.swift; sourceTree = "<group>"; };
 		68A85F212A56EB4E00EDFED1 /* mb_weatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mb_weatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68A85F242A56EB4E00EDFED1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		68A85F262A56EB4E00EDFED1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		68A85F2B2A56EB4E00EDFED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68A85F2D2A56EB4F00EDFED1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68A85F302A56EB4F00EDFED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -142,6 +141,7 @@
 		68A85F952A57509A00EDFED1 /* LogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		68A85F9B2A5750D000EDFED1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		68A953082A5AA8FA00E5F7DE /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
+		68AC81A22A6021B100172B47 /* String+isValidCityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidCityName.swift"; sourceTree = "<group>"; };
 		68ACF5E52A5BE9D9008C0008 /* CitiesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListCoordinator.swift; sourceTree = "<group>"; };
 		68ACF5E72A5BE9FC008C0008 /* CitiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListViewModel.swift; sourceTree = "<group>"; };
 		68ACF5E92A5BEA03008C0008 /* CitiesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListView.swift; sourceTree = "<group>"; };
@@ -272,7 +272,6 @@
 				68A85F592A56F02B00EDFED1 /* Extension */,
 				68A85F562A56EF5300EDFED1 /* Base */,
 				68A85F242A56EB4E00EDFED1 /* AppDelegate.swift */,
-				68A85F262A56EB4E00EDFED1 /* SceneDelegate.swift */,
 				68A85F9B2A5750D000EDFED1 /* Constants.swift */,
 			);
 			path = mb_weatherApp;
@@ -310,6 +309,7 @@
 			children = (
 				68B2A34C2A5DD502009D876D /* Array+removingDuplicates.swift */,
 				68B2A34E2A5DD52E009D876D /* Optional+isNone.swift */,
+				68AC81A22A6021B100172B47 /* String+isValidCityName.swift */,
 				68A85F5A2A56F03F00EDFED1 /* UINavigationController+viewController.swift */,
 				68AE3FAB2A597DED0002F406 /* UIStackView+addArrangedSubviews.swift */,
 				68AE3FA32A5945840002F406 /* UIView+addSubviews.swift */,
@@ -840,6 +840,7 @@
 				68A85F5B2A56F03F00EDFED1 /* UINavigationController+viewController.swift in Sources */,
 				68A85F962A57509A00EDFED1 /* QuarterLogoView.swift in Sources */,
 				6847D7BA2A599F8800E14BE4 /* APITextViewModel.swift in Sources */,
+				68AC81A32A6021B100172B47 /* String+isValidCityName.swift in Sources */,
 				68B2A34B2A5DD1B1009D876D /* ErrorType.swift in Sources */,
 				68A85F7C2A573FB400EDFED1 /* Coordinator.swift in Sources */,
 				688791282A5AC3BA00810AD0 /* Target.swift in Sources */,
@@ -876,7 +877,6 @@
 				68A85F252A56EB4E00EDFED1 /* AppDelegate.swift in Sources */,
 				68883F082A5B469100E59C90 /* WeatherModel.swift in Sources */,
 				68A85F9C2A5750D000EDFED1 /* Constants.swift in Sources */,
-				68A85F272A56EB4E00EDFED1 /* SceneDelegate.swift in Sources */,
 				688791362A5AD4A000810AD0 /* UIView+removeGestureRecognizer.swift in Sources */,
 				68A85F762A57028D00EDFED1 /* DetailsView.swift in Sources */,
 				6867C0542A59E7F1006FE499 /* LoaderView.swift in Sources */,

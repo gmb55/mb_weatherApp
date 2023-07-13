@@ -5,24 +5,29 @@
 //  Created by Michał Bagrowski on 06/07/2023.
 //
 
+import IQKeyboardManagerSwift
 import UIKit
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+    var appCoordinator: Coordinator?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        IQKeyboardManager.shared.enable = true
+        let window = UIWindow()
+        
+        let navigationController = UINavigationController()
+        
+        appCoordinator = AppCoordinator(navigationController: navigationController)
+        appCoordinator?.start()
+        
+        window.rootViewController = navigationController
+        
+        self.window = window
+        window.makeKeyAndVisible()
+        
         return true
     }
-
-    // MARK: - UISceneSession Lifecycle
-
-    @available(iOS 13.0, *)
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    @available(iOS 13.0, *)
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-    }
 }
-

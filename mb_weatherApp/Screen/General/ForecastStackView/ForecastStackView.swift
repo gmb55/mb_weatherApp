@@ -219,20 +219,20 @@ extension ForecastStackView: ForecastStackViewInput {
             let leftBottomItem = model.list[2]
             let rightBottomItem = model.list[3]
             
-            leftTopTempLabel.text = String(format: "%.0f", leftTopItem.main.temp) + Constants.General.celsiusDegreeSymbol
-            leftTopTempLabel.textColor = leftTopItem.main.temp.temperatureTextColor()
+            leftTopTempLabel.text = String(format: "%.0f", leftTopItem.main.temp.rounded()) + Constants.General.celsiusDegreeSymbol
+            leftTopTempLabel.textColor = leftTopItem.main.temp.rounded().temperatureTextColor()
             leftTopDateLabel.text = leftTopItem.dtTxt.replacingOccurrences(of: " ", with: "\n")
 
-            rightTopTempLabel.text = String(format: "%.0f", rightTopItem.main.temp) + Constants.General.celsiusDegreeSymbol
-            rightTopTempLabel.textColor = rightTopItem.main.temp.temperatureTextColor()
+            rightTopTempLabel.text = String(format: "%.0f", rightTopItem.main.temp.rounded()) + Constants.General.celsiusDegreeSymbol
+            rightTopTempLabel.textColor = rightTopItem.main.temp.rounded().temperatureTextColor()
             rightTopDateLabel.text = rightTopItem.dtTxt.replacingOccurrences(of: " ", with: "\n")
 
-            leftBottomTempLabel.text = String(format: "%.0f", leftBottomItem.main.temp) + Constants.General.celsiusDegreeSymbol
-            leftBottomTempLabel.textColor = leftBottomItem.main.temp.temperatureTextColor()
+            leftBottomTempLabel.text = String(format: "%.0f", leftBottomItem.main.temp.rounded()) + Constants.General.celsiusDegreeSymbol
+            leftBottomTempLabel.textColor = leftBottomItem.main.temp.rounded().temperatureTextColor()
             leftBottomDateLabel.text = leftBottomItem.dtTxt.replacingOccurrences(of: " ", with: "\n")
 
-            rightBottomTempLabel.text = String(format: "%.0f", rightBottomItem.main.temp) + Constants.General.celsiusDegreeSymbol
-            rightBottomTempLabel.textColor = rightBottomItem.main.temp.temperatureTextColor()
+            rightBottomTempLabel.text = String(format: "%.0f", rightBottomItem.main.temp.rounded()) + Constants.General.celsiusDegreeSymbol
+            rightBottomTempLabel.textColor = rightBottomItem.main.temp.rounded().temperatureTextColor()
             rightBottomDateLabel.text = rightBottomItem.dtTxt.replacingOccurrences(of: " ", with: "\n")
         }
     }

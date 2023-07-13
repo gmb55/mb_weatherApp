@@ -175,5 +175,6 @@ extension CitiesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let isLastSelected = tableView == citiesListView.lastSelectedTableView
         viewModel.selectCityIndex(indexPath.row, forLast: isLastSelected)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

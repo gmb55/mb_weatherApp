@@ -148,6 +148,7 @@ private extension DefaultCitiesListViewModel {
     func handleSelectedCityIndex(_ index: Int, forLast: Bool) {
         if let cityName = cityName(for: index, forLast: forLast) {
             AppData.lastSelectedCitiesNames.append(cityName)
+            prepareRecentlySelected()
             navigation.coordinator?.startDetailsScreen.perform(
                 param: DefaultDetailsViewModel.DetailsModel(cityName: cityName, apiKey: apiKey)
             )

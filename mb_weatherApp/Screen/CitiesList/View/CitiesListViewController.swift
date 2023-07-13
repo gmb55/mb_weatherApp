@@ -71,6 +71,7 @@ private extension CitiesListViewController {
     
     func setupFilteredCitiesObserver() {
         viewModel.filteredCitiesNames
+            .skip(1)
             .subscribe(onNext: { [weak self] names in
                 guard let self = self else { return }
                 DispatchQueue.main.async {
@@ -172,6 +173,10 @@ extension CitiesListViewController: UITableViewDataSource {
 
 // TODO: add Wraper that will handle TableView in ViewModel
 extension CitiesListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let isLastSelected = tableView == citiesListView.lastSelectedTableView
         viewModel.selectCityIndex(indexPath.row, forLast: isLastSelected)

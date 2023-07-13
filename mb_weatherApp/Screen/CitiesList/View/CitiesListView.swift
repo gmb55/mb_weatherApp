@@ -169,7 +169,7 @@ extension CitiesListView: CitiesListViewInput {
         allCitiesTableView.reloadData()
         allCitiesTableView.isHidden = filteredCities.isEmpty && isSearching
         lastSelectedTableView.reloadData()
-        lastSelectedStackView.isHidden = !filteredCities.isEmpty || isSearching
+        lastSelectedStackView.isHidden = !filteredCities.isEmpty || isSearching || AppData.lastSelectedCitiesNames.isEmpty
         noCityFoundLabel.isHidden = !filteredCities.isEmpty || !isSearching
     }
     

@@ -54,6 +54,7 @@
 		68A85F9C2A5750D000EDFED1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A85F9B2A5750D000EDFED1 /* Constants.swift */; };
 		68A953092A5AA8FA00E5F7DE /* APIProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A953082A5AA8FA00E5F7DE /* APIProvider.swift */; };
 		68AC81A32A6021B100172B47 /* String+isValidCityName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AC81A22A6021B100172B47 /* String+isValidCityName.swift */; };
+		68AC81A72A60287500172B47 /* CitiesListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AC81A62A60287500172B47 /* CitiesListViewModelTests.swift */; };
 		68ACF5E62A5BE9D9008C0008 /* CitiesListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ACF5E52A5BE9D9008C0008 /* CitiesListCoordinator.swift */; };
 		68ACF5E82A5BE9FC008C0008 /* CitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ACF5E72A5BE9FC008C0008 /* CitiesListViewModel.swift */; };
 		68ACF5EA2A5BEA03008C0008 /* CitiesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68ACF5E92A5BEA03008C0008 /* CitiesListView.swift */; };
@@ -142,6 +143,7 @@
 		68A85F9B2A5750D000EDFED1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		68A953082A5AA8FA00E5F7DE /* APIProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIProvider.swift; sourceTree = "<group>"; };
 		68AC81A22A6021B100172B47 /* String+isValidCityName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+isValidCityName.swift"; sourceTree = "<group>"; };
+		68AC81A62A60287500172B47 /* CitiesListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListViewModelTests.swift; sourceTree = "<group>"; };
 		68ACF5E52A5BE9D9008C0008 /* CitiesListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListCoordinator.swift; sourceTree = "<group>"; };
 		68ACF5E72A5BE9FC008C0008 /* CitiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListViewModel.swift; sourceTree = "<group>"; };
 		68ACF5E92A5BEA03008C0008 /* CitiesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesListView.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				68A85F3B2A56EB4F00EDFED1 /* mb_weatherAppTests.swift */,
+				68AC81A62A60287500172B47 /* CitiesListViewModelTests.swift */,
 			);
 			path = mb_weatherAppTests;
 			sourceTree = "<group>";
@@ -893,6 +896,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68A85F3C2A56EB4F00EDFED1 /* mb_weatherAppTests.swift in Sources */,
+				68AC81A72A60287500172B47 /* CitiesListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
